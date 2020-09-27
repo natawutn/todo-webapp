@@ -11,7 +11,7 @@ class App extends React.Component {
         if(process.env.TODO_ENDPOINT) {
             this.todo_endpoint = process.env.TODO_ENDPOINT;
         } else {
-            this.todo_endpoint = 'http://localhost:8080/';
+            this.todo_endpoint = 'http://localhost:8000/';
         }
         console.log('Using TODO endpoint at: ' + this.todo_endpoint);
         this.state = {
