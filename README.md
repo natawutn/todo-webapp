@@ -3,6 +3,19 @@ Todo is a microservice-based web application.
 It is created by Natawut Nupairoj for 2110415 Software Defined Systems at Department of Computer Engineering, Chulalongkorn University.
 This is the webapp front-end module written using React.
 
+## Docker
+To build the container for this module, use the following command:
+```
+docker build -t todo-webapp:release-1 .
+```
+
+To run the container, use the following command:
+```
+docker run -it --rm --name webapp todo-webapp:release-1
+```
+Note that it is important to keep stdin open (option -it)
+and you also need todo service at port 8000.
+
 ## Running
 
 <u>
