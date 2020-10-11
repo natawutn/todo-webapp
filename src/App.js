@@ -1,5 +1,6 @@
 import React from 'react';
 import {TodoTable} from './TodoComponents';
+import {NotificationTable} from './NotificationComponents';
 
 function compare(a, b) {
     return (a.id > b.id)? 1 : (a.id < b.id)? -1 : 0;
@@ -53,13 +54,16 @@ class App extends React.Component {
     }
 
     handleSubmit(event) {
+        var now = new Date();
+        now.setSeconds(now.getSeconds() + 5);
         const todo = {
             title: this.state.title,
             detail: this.state.detail,
-            duedate: new Date(),
+            duedate: now,
             tags: [],
             completed: this.state.completed
         }
+        console.log('submit', todo);
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -95,6 +99,10 @@ class App extends React.Component {
               <h1>
                   Uber To Do
               </h1>
+              <div>
+                  <NotificationTable></NotificationTable>
+              </div>
+              <hr />
               {!opened && (
                   <div>
                       <TodoTable todos={this.state.todos}/>

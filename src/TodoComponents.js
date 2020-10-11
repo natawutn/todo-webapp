@@ -4,6 +4,7 @@ class TodoRow extends React.Component {
     render() {
         const todo = this.props.todo;
         const completed = todo.completed? <input type="checkbox" disabled="disabled" checked="checked" /> : <span>&nbsp;</span>;
+        const duedate = new Date(todo.duedate);
 
         return (
             <tr>
@@ -11,7 +12,7 @@ class TodoRow extends React.Component {
                 <td>
                     <b>{todo.title}</b><br />
                     {todo.detail}<br />
-                    {todo.duedate}
+                    {duedate.toString()}
                 </td>
             </tr>
         );
