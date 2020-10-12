@@ -23,7 +23,7 @@ export class NotificationTable extends React.Component {
             numNew: 0,
             notifications: []
         }
-        this.notification_endpoint = 'http://localhost:9000/';
+        this.notification_endpoint = 'http://localhost:8000/notification/';
     }
 
     refreshBadge() {

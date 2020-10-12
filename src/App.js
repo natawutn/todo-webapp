@@ -12,7 +12,7 @@ class App extends React.Component {
         if(process.env.TODO_ENDPOINT) {
             this.todo_endpoint = process.env.TODO_ENDPOINT;
         } else {
-            this.todo_endpoint = 'http://localhost:8000/';
+            this.todo_endpoint = 'http://localhost:8000/todo/';
         }
         console.log('Using TODO endpoint at: ' + this.todo_endpoint);
         this.state = {
@@ -71,9 +71,8 @@ class App extends React.Component {
         };
         fetch(this.todo_endpoint, requestOptions)
             .then(response => response.json())
-            .then(data => {
-                this.refresh();
-            });
+            .then(data => this.refresh())
+            .catch(console.log);
         this.toggleBox();
         event.preventDefault();
     }
