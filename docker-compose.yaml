@@ -1,0 +1,43 @@
+version: '3.9'
+services:
+  todo:
+    container_name: todo
+    image: saenyakorn/todo
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+    networks:
+      - todo-network
+      - database-network
+    environment:
+      REDIS_HOST: redis
+      NOTIFICATION_HOST: todo-notification
+    depends_on:
+      - todo-notification
+      - redis
+
+  todo-notification:
+    container_name: todo-notification
+    image: saenyakorn/todo-notification
+    restart: unless-stopped
+    ports:
+      - 9000:9000
+    networks:
+      - todo-network
+      - database-network
+    environment:
+      REDIS_HOST: redis
+    depends_on:
+      - redis
+
+  redis:
+    container_name: redis
+    image: redis:6.2.5
+    ports:
+      - 6379:6379
+    networks:
+      - database-network
+
+networks:
+  todo-network:
+  database-network:
